@@ -52,22 +52,24 @@ public class RedisConfig {
 
     /**
      * 解决redis中查看乱码的问题
+     * 但查询时会报错 java.util.LinkedHashMap cannot be cast to...
+     * 所返回的数据将不再对应存入的对象，需要转为json再转化为对象(fastjson等)
      * @param factory
      * @return
      */
-    @Bean
-    public CacheManager cacheManager(RedisConnectionFactory factory) {
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
-
-        // 配置序列化
-        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
-        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer));
-
-        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
-                .cacheDefaults(redisCacheConfiguration)
-                .build();
-        return cacheManager;
-    }
+//    @Bean
+//    public CacheManager cacheManager(RedisConnectionFactory factory) {
+//        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
+//        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
+//
+//        // 配置序列化
+//        RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
+//        RedisCacheConfiguration redisCacheConfiguration = config.serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer))
+//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(jackson2JsonRedisSerializer));
+//
+//        RedisCacheManager cacheManager = RedisCacheManager.builder(factory)
+//                .cacheDefaults(redisCacheConfiguration)
+//                .build();
+//        return cacheManager;
+//    }
 }
