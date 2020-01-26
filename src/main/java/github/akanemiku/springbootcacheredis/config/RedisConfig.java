@@ -23,6 +23,7 @@ public class RedisConfig {
 
     /**
      * 配置自定义redisTemplate
+     * redis默认string,string类型存储，自定义后可存储object
      * @return
      */
     @Bean
