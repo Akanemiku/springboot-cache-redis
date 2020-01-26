@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Redis Template 工具类
+ */
 @Component
 public final class RedisUtil {
     @Autowired
