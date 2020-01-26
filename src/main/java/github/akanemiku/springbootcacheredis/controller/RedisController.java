@@ -18,7 +18,7 @@ public class RedisController {
 
     @ApiOperation(value = "根据学生id查询对应学生")
     @ApiImplicitParams(
-            @ApiImplicitParam(paramType = "query", name = "id", value = "学生id", required = true)
+            @ApiImplicitParam(paramType = "query", name = "id", value = "学生id", required = true,defaultValue = "1")
     )
     @GetMapping("/list")
     public ResponseEntity getStudent(@RequestParam("id") Integer id) {
