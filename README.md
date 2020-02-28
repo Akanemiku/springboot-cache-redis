@@ -1,3 +1,3 @@
 # SpringBoot-Cache-Redis
 
-#### Based on Lettuce.
+#### Based on Lettuce
